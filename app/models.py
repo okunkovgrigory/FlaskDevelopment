@@ -1,4 +1,5 @@
 from datetime import datetime
+import hashlib
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -16,6 +17,10 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def avatar(self, email):
+        my_avatar = 'https://www.gravatar.com/avatar/' + hashlib.md5(f'{email}'.encode()).hexdigest()
+        return my_avatar
 
     def __repr__(self):
         return f'User {self.username}'
