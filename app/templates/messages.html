@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <title>{{ title }}</title>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <table>
+            <caption>{{ form.messages.label }}</caption>
+            <tr>
+                <td>{{ form.messages(size=32) }}</td>
+            </tr>
+        </table>
+        {% for error in form.messages.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        <table>
+            <caption>{{ form.tag.label }}</caption>
+            <tr>
+                <td>{{ form.tag(size=32) }}</td>
+            </tr>
+        </table>
+        {% for error in form.tag.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+    <p>
+    <h2>Messages list</h2>
+    {% for message in message_list %}
+        <div>{{ message.message }} <b>#{{ message.tag }}</b></div>
+    {% endfor %}
+    </p>
+{% endblock %}

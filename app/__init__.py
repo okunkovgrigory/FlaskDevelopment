@@ -12,4 +12,4 @@ login = LoginManager(app)
 login.login_view = 'login'
 login.login_message = 'Необходимо войти в систему для доступа к этой странице'
 
-from app import routes, models
+from app import routes, models, errors

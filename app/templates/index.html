@@ -1,19 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hello, {{current_user.username}}!</h1>
-        {% for post in posts %}
-        <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b><p></div>
-        {% endfor %}
-
-{#    <h2>Messages</h2>#}
-{#    <form method="post", action="{{ url_for('add_messages') }}">#}
-{#        <input type="text" name="text">#}
-{#        <input type="text" name="tag">#}
-{#        <button type="submit">Submit</button>#}
-{#    <h3>Message list</h3>#}
-{#    {% for message in messages %}#}
-{#        <div>{{ message.text }}&nbsp;<b>#{{ message.tag }}</b></div>#}
-{#    {% endfor %}#}
-{#    </form>#}
-{%endblock%}
+    <h1>Hello, {{ current_user.username }}!</h1>
+    {% for post in posts %}
+        <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b>
+            <p></div>
+    {% endfor %}
+{% endblock %}

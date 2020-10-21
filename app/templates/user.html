@@ -1,12 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>User: {{ user.username }}</h1>
-        <img src="{{ user.avatar(user.email) }} " width="200" height=200">
+    <table>
+        <tr valign="top">
+            <td><img src="{{ user.avatar() }} " width="128" height="128"></td>
+            <td><h1>User: {{ user.username }}</h1>
+                {% if user.about_me %} <p> About me: {{ user.about_me }}</p>
+                {% endif %}
+                {% if user.last_seen %} <p> Last seen on: {{ user.last_seen }}</p>
+                {% endif %}
+                {% if user == current_user %}
+                    <a href="{{ url_for('edit_profile') }}">Edit Profile</a>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
     <hr>
     {% for post in posts %}
-        <ul>
-            <li>{{ post.author.username }} says: {{ post.body }}</li>
-        </ul>
+        <table>
+            <tr>
+                <td><img src="{{ post.author.avatar() }} " width="50" height="50"></td>
+                <td>{{ post.author.username }} says:<br>{{ post.body }}</td>
+            </tr>
+        </table>
     {% endfor %}
 {% endblock %}
