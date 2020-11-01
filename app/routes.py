@@ -87,6 +87,7 @@ def user(username):
 
 
 @app.route('/messages', methods=['GET', 'POST'])
+@login_required
 def messages():
     form = MessagesForm()
     if form.validate_on_submit():

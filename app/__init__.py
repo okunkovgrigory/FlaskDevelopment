@@ -1,5 +1,5 @@
 from flask import Flask
-from config import Config
+from settings import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -12,4 +12,4 @@ login = LoginManager(app)
 login.login_view = 'login'
 login.login_message = 'Необходимо войти в систему для доступа к этой странице'
 
-from app import routes, models, errors
+from app import routes, models, errors, logger
